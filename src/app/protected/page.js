@@ -1,16 +1,14 @@
-// src/app/page.js
-"use client";  // Isso força o Next.js a tratar este componente como Client Component
+// src/app/protected/page.js
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
-import { SignedIn, SignedOut, RedirectToSignIn, UserButton } from "@clerk/nextjs";
-
-export default function HomePage() {
+export default function ProtectedPage() {
   return (
     <div className="container">
       <header>
         <nav>
           <div className="logo">MyApp</div>
           <SignedIn>
-            <UserButton />
+            <div className="logout">Sair</div>
           </SignedIn>
         </nav>
       </header>
@@ -20,9 +18,9 @@ export default function HomePage() {
           <RedirectToSignIn />
         </SignedOut>
         <SignedIn>
-          <section className="welcome-section">
-            <h1>Bem-vindo ao MyApp</h1>
-            <p>Gerencie sua conta e explore a plataforma.</p>
+          <section className="protected-section">
+            <h1>Área Protegida</h1>
+            <p>Bem-vindo! Aqui estão seus dados e informações confidenciais.</p>
           </section>
         </SignedIn>
       </main>
@@ -55,6 +53,10 @@ export default function HomePage() {
           font-weight: bold;
         }
 
+        .logout {
+          cursor: pointer;
+        }
+
         main {
           flex: 1;
           display: flex;
@@ -63,7 +65,7 @@ export default function HomePage() {
           background-color: #f4f4f4;
         }
 
-        .welcome-section {
+        .protected-section {
           text-align: center;
           background: white;
           padding: 2rem;
