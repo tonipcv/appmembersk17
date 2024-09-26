@@ -1,2 +1,3 @@
 [phases]
-install = "npm install"
+  [phases.install]
+    command = "npm install"
