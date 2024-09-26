@@ -1,4 +1,6 @@
 // src/app/protected/page.js
+"use client";  // Isso garante que o componente seja tratado como Client Component
+
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
 export default function ProtectedPage() {
